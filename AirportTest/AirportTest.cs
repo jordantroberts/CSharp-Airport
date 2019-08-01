@@ -6,10 +6,9 @@ namespace AirportTest
 {
     public class AirportTest
     {
-        // moq these later
         Airport airport = new Airport("TestAirport");
         Plane plane = new Plane("TestPlane");
-        // moq these later
+
         [Test]
        
         public void PlaneCanLand()
