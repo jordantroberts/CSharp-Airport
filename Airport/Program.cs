@@ -4,15 +4,16 @@ namespace Airport
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Airport airport = new Airport();
-            Plane plane = new Plane("Jordan's Private Jet");
-            Plane plane2 = new Plane("Amy's Private Jet");
-            airport.Land(plane);
-            airport.Land(plane2);
-            airport.TakeOff(plane);
-            airport.GetPlaneCount();
+            var gatwick = new Airport("London Gatwick");
+            var planeA = new Plane("Jordan's Private Jet");
+            var planeB = new Plane("Amy's Private Jet");
+
+            gatwick.Land(planeA);
+            gatwick.Land(planeB);
+            gatwick.TakeOff(planeB);
+            gatwick.GetPlaneCount();
         }
     }
 }
