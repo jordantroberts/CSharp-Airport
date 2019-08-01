@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Airport
 {
@@ -28,5 +29,11 @@ namespace Airport
             return planes;
         }
 
+        public int GetPlaneCount()
+        {
+            Console.WriteLine(planes.Count);
+            return planes.Count();
+        }
     }
 }
+

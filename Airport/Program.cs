@@ -12,6 +12,9 @@ namespace Airport
             airport.Land(plane);
             airport.Land(plane2);
             airport.TakeOff(plane);
+            airport.GetPlaneCount();
         }
     }
 }
+
+
