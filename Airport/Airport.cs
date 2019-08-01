@@ -1,38 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Airport
 {
     public class Airport
     {
-        public List<object> planes;
+        public List<Plane> planes;
 
         public Airport()
         {
-            planes = new List<object>();
+            planes = new List<Plane>();
         }
 
-        public List<object> Land(object plane)
+        public List<Plane> Land(Plane plane)
         {
             planes.Add(plane);
-            Console.WriteLine("Currently in the airport:");
-            planes.ForEach(Console.WriteLine);
+            Console.WriteLine($"{ plane.Name } has landed");
             return planes;
         }
 
-        public List<object> TakeOff(object plane)
+        public List<Plane> TakeOff(Plane plane)
         {
             planes.Remove(plane);
-            Console.WriteLine("Currently in the airport:");
-            planes.ForEach(Console.WriteLine);
+            Console.WriteLine($"{ plane.Name } has departed");
             return planes;
         }
 
         public int GetPlaneCount()
         {
-            Console.WriteLine(planes.Count);
-            return planes.Count();
+            Console.WriteLine($"Planes in the airport: {planes.Count}");
+            return planes.Count;
         }
     }
 }
