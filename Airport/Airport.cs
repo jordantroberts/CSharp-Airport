@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ClassNamePlane;
+using ClassNameWeather;
 
 namespace ClassNameAirport
 {
@@ -8,17 +9,26 @@ namespace ClassNameAirport
     {
         public string AirportName { get; set; }
         public List<Plane> planes;
+        public Weather _weather; 
 
         public Airport(string airportName)
         {
             planes = new List<Plane>();
             AirportName = airportName;
+            _weather = new Weather(); 
         }
 
         public void Land(Plane plane)
         {
-            planes.Add(plane);
-            Console.WriteLine($"{ plane.Name } has landed at {AirportName}");
+            if (_weather.Forecast() != "stormy")
+            {
+                planes.Add(plane);
+                Console.WriteLine($"{ plane.Name } has landed at {AirportName}");
+            }
+            else
+            {
+                throw new Exception("It's too stormy to land");
+            }
         }
 
         public void TakeOff(Plane plane)
