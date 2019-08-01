@@ -5,14 +5,14 @@ namespace Airport
 {
     public class Airport
     {
-        public List<string> planes;
+        public List<object> planes;
 
         public Airport()
         {
-            planes = new List<string>();
+            planes = new List<object>();
         }
 
-        public List<string> Land(string plane)
+        public List<object> Land(object plane)
         {
             planes.Add(plane);
             Console.WriteLine("Currently in the airport:");
@@ -20,7 +20,7 @@ namespace Airport
             return planes;
         }
 
-        public List<string> TakeOff(string plane)
+        public List<object> TakeOff(object plane)
         {
             planes.Remove(plane);
             Console.WriteLine("Currently in the airport:");

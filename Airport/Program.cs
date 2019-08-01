@@ -7,9 +7,11 @@ namespace Airport
         static void Main(string[] args)
         {
             Airport airport = new Airport();
-            airport.Land("Plane 1");
-            airport.Land("Plane 2");
-            airport.TakeOff("Plane 1");
+            Plane plane = new Plane("Jordan's Private Jet");
+            Plane plane2 = new Plane("Amy's Private Jet");
+            airport.Land(plane);
+            airport.Land(plane2);
+            airport.TakeOff(plane);
         }
     }
 }
