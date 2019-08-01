@@ -9,6 +9,7 @@ namespace Airport
             Airport airport = new Airport();
             airport.Land("Plane 1");
             airport.Land("Plane 2");
+            airport.TakeOff("Plane 1");
         }
     }
 }
