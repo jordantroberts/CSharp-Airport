@@ -1,6 +1,8 @@
 ﻿using System;
+using ClassNameAirport;
+using ClassNamePlane;
 
-namespace Airport
+namespace ClassNameProgram
 {
     class Program
     {

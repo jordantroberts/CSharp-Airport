@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Airport
+namespace ClassNamePlane
 {
     public class Plane
     {
