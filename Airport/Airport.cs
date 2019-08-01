@@ -33,8 +33,16 @@ namespace ClassNameAirport
 
         public void TakeOff(Plane plane)
         {
-            planes.Remove(plane);
-            Console.WriteLine($"{ plane.Name } has departed from {AirportName}");
+            if (_weather.Forecast() != "stormy")
+            {
+                planes.Remove(plane);
+                Console.WriteLine($"{ plane.Name } has departed from {AirportName}");
+            }
+            else
+            {
+                throw new Exception("It's too stormy to take off");
+            }
+            
         }
 
         public int GetPlaneCount()
