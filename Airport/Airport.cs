@@ -10,7 +10,7 @@ namespace ClassNameAirport
         public List<Plane> planes;
 
         public Airport(string airportName)
-        { 
+        {
             planes = new List<Plane>();
             AirportName = airportName;
         }
