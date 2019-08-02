@@ -2,11 +2,6 @@
 namespace ClassNameWeather
 {
 
-    public interface IWeather
-    {
-        string Forecast();
-    }
-
     public class Weather
     {
         public virtual string Forecast()
@@ -22,5 +17,7 @@ namespace ClassNameWeather
                 return "sunny";
             }
         }
+
     }
+ 
 }
