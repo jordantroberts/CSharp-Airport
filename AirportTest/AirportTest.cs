@@ -3,7 +3,7 @@ using ClassNameAirport;
 using ClassNamePlane;
 using ClassNameWeather;
 using Moq;
-
+using System;
 
 namespace AirportTest
 {
@@ -15,7 +15,7 @@ namespace AirportTest
         
         [Test]
        
-        public void PlaneCanLand()
+        public void PlaneCanLandIfSunny()
         {
             var weather = new Mock<Weather>();
             weather.Setup(x => x.Forecast()).Returns("sunny");
@@ -23,6 +23,17 @@ namespace AirportTest
 
             airport.Land(plane);
             Assert.IsTrue(airport.planes.Contains(plane));
+        }
+
+        [Test]
+
+        public void PlaneWontLandIfStormy()
+        {
+            var weather = new Mock<Weather>();
+            weather.Setup(x => x.Forecast()).Returns("stormy");
+            var airport = new Airport("TestAirport", weather.Object);
+            var exception = Assert.Throws<Exception>(() => airport.Land(plane));
+            Assert.AreEqual(exception.Message, "It's too stormy to land");
         }
 
         //public void PlaneCanTakeOff()
