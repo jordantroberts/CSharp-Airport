@@ -36,12 +36,16 @@ namespace AirportTest
             Assert.AreEqual(exception.Message, "It's too stormy to land");
         }
 
-        //public void PlaneCanTakeOff()
-        //{
-        //    airport.Land(plane);
-        //    airport.TakeOff(plane);
-        //    Assert.IsFalse(airport.planes.Contains(plane));
-        //}
+        [Test]
+        public void PlaneCanTakeOffIfSunny()
+        {
+            var weather = new Mock<Weather>();
+            weather.Setup(x => x.Forecast()).Returns("sunny");
+            var airport = new Airport("TestAirport", weather.Object);
+            airport.Land(plane);
+            airport.TakeOff(plane);
+            Assert.IsFalse(airport.planes.Contains(plane));
+        }
     }
 }
 
