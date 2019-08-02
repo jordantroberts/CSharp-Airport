@@ -57,6 +57,16 @@ namespace AirportTest
             var exception = Assert.Throws<Exception>(() => airport2.TakeOff(plane));
             Assert.AreEqual(exception.Message, "It's too stormy to take off");
         }
+
+        [Test]
+        public void PlaneWontLandIfNoSpace()
+        {
+            var weather = new Mock<Weather>();
+            weather.Setup(x => x.Forecast()).Returns("sunny");
+            var airport = new Airport("TestAirport", weather.Object, 0);
+            var exception = Assert.Throws<Exception>(() => airport.Land(plane));
+            Assert.AreEqual(exception.Message, "Airport is full");
+        }
     }
 }
 
