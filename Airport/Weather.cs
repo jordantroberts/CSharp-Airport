@@ -1,14 +1,15 @@
 ﻿using System;
 namespace ClassNameWeather
 {
+
+    public interface IWeather
+    {
+        string Forecast();
+    }
+
     public class Weather
     {
-        public Weather()
-        {
-
-        }
-
-        public string Forecast()
+        public virtual string Forecast()
         {
             Random random = new Random();
             var weather = random.Next(1, 11);

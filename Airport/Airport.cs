@@ -7,23 +7,24 @@ namespace ClassNameAirport
 {
     public class Airport
     {
-        public string AirportName { get; set; }
+        private string _AirportName { get; set; }
         public List<Plane> planes;
-        public Weather _weather; 
+        public Weather weather; 
 
-        public Airport(string airportName)
+        public Airport(string _airportName, Weather weather)
         {
             planes = new List<Plane>();
-            AirportName = airportName;
-            _weather = new Weather(); 
+            _AirportName = _airportName;
+            this.weather = weather;
+      
         }
 
         public void Land(Plane plane)
         {
-            if (_weather.Forecast() != "stormy")
+            if (weather.Forecast() != "stormy")
             {
                 planes.Add(plane);
-                Console.WriteLine($"{ plane.Name } has landed at {AirportName}");
+                Console.WriteLine($"{ plane.Name } has landed at {_AirportName}");
             }
             else
             {
@@ -33,10 +34,10 @@ namespace ClassNameAirport
 
         public void TakeOff(Plane plane)
         {
-            if (_weather.Forecast() != "stormy")
+            if (weather.Forecast() != "stormy")
             {
                 planes.Remove(plane);
-                Console.WriteLine($"{ plane.Name } has departed from {AirportName}");
+                Console.WriteLine($"{ plane.Name } has departed from {_AirportName}");
             }
             else
             {
@@ -47,7 +48,7 @@ namespace ClassNameAirport
 
         public int GetPlaneCount()
         {
-            Console.WriteLine($"Number of planes at {AirportName}: {planes.Count}");
+            Console.WriteLine($"Number of planes at {_AirportName}: {planes.Count}");
             return planes.Count;
         }
 

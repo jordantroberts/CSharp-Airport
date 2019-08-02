@@ -9,7 +9,8 @@ namespace ClassNameProgram
     {
         static void Main()
         {
-            var gatwick = new Airport("London Gatwick");
+    
+            var gatwick = new Airport("London Gatwick", new Weather()); 
             var planeA = new Plane("Jordan's Private Jet");
             var planeB = new Plane("Amy's Private Jet");
             var planeC = new Plane("Steve's Helicopter");
@@ -21,7 +22,6 @@ namespace ClassNameProgram
             gatwick.Land(planeD);
             gatwick.TakeOff(planeB);
             gatwick.GetPlaneCount();
-
         }
     }
 }
