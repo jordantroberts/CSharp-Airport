@@ -10,7 +10,7 @@ namespace ClassNameProgram
         static void Main()
         {
     
-            var gatwick = new Airport("London Gatwick", new Weather(), 10); 
+            var gatwick = new Airport("London Gatwick", new Weather(), 2); 
             var planeA = new Plane("Jordan's Private Jet");
             var planeB = new Plane("Amy's Private Jet");
             var planeC = new Plane("Steve's Helicopter");

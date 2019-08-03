@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ClassNamePlane;
 using ClassNameWeather;
+using AirportExceptions;
 
 namespace ClassNameAirport
 {
@@ -17,7 +18,7 @@ namespace ClassNameAirport
         {
             planes = new List<Plane>();
             _AirportName = _airportName;
-            _Capacity = _capacity; 
+            _Capacity = _capacity;
             this.weather = weather;
         }
 
@@ -27,18 +28,18 @@ namespace ClassNameAirport
             {
                 if (weather.Forecast() == "stormy")
                 {
-                    throw new Exception("It's too stormy to land");
+                    throw new StormyException("It's too stormy to land");
                 }
                 if (planes.Count >= _Capacity)
                 {
-                    throw new Exception("Airport is full");
+                    throw new CapacityException("Airport is full");
                 }
                 planes.Add(plane);
                 Console.WriteLine($"{ plane.Name } has landed at {_AirportName}");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("There was a problem");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -46,16 +47,16 @@ namespace ClassNameAirport
         {
             if (weather.Forecast() == "stormy")
             {
-                throw new Exception("It's too stormy to take off");
+                throw new StormyException("It's too stormy to take off");
             }
             if (planes.Contains(plane))
             {
                 planes.Remove(plane);
                 Console.WriteLine($"{ plane.Name } has departed from {_AirportName}");
             }
-            else 
+            else
             {
-                throw new Exception("Plane not in the airport");
+                throw new PlaneNotInAirportException("Plane not in the airport");
             }
         }
 
@@ -74,7 +75,6 @@ namespace ClassNameAirport
         {
             return planes;
         }
-
     }
 }
 
