@@ -22,41 +22,45 @@ namespace ClassNameAirport
             this.weather = weather;
         }
 
-        public void Land(Plane plane)
+        public List<Plane> Land(Plane plane)
         {
-            try
             {
                 if (weather.Forecast() == "stormy")
                 {
-                    throw new StormyException("It's too stormy to land");
+                    Console.WriteLine("It's too stormy to land");
+                    return planes;
                 }
                 if (planes.Count >= _Capacity)
                 {
-                    throw new CapacityException("Airport is full");
+                    Console.WriteLine("Airport is full");
+                    return planes;
                 }
-                planes.Add(plane);
-                Console.WriteLine($"{ plane.Name } has landed at {_AirportName}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                else
+                {
+                    planes.Add(plane);
+                    Console.WriteLine($"{ plane.Name } has landed at {_AirportName}");
+                    return planes; 
+                }
             }
         }
 
-        public void TakeOff(Plane plane)
+        public List<Plane> TakeOff(Plane plane)
         {
             if (weather.Forecast() == "stormy")
             {
-                throw new StormyException("It's too stormy to take off");
+                Console.WriteLine("It's too stormy to take off");
+                return planes; 
             }
             if (planes.Contains(plane))
             {
                 planes.Remove(plane);
                 Console.WriteLine($"{ plane.Name } has departed from {_AirportName}");
+                return planes; 
             }
             else
             {
-                throw new PlaneNotInAirportException("Plane not in the airport");
+                Console.WriteLine("Plane not in the airport");
+                return planes; 
             }
         }
 
@@ -75,6 +79,7 @@ namespace ClassNameAirport
         {
             return planes;
         }
+
     }
 }
 
