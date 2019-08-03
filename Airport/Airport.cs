@@ -23,16 +23,23 @@ namespace ClassNameAirport
 
         public void Land(Plane plane)
         {
-            if (weather.Forecast() == "stormy")
+            try
             {
-                throw new Exception("It's too stormy to land");
+                if (weather.Forecast() == "stormy")
+                {
+                    throw new Exception("It's too stormy to land");
+                }
+                if (planes.Count >= _Capacity)
+                {
+                    throw new Exception("Airport is full");
+                }
+                planes.Add(plane);
+                Console.WriteLine($"{ plane.Name } has landed at {_AirportName}");
             }
-            if (planes.Count >= _Capacity)
+            catch(Exception ex)
             {
-                throw new Exception("Airport is full");
+                Console.WriteLine("There was a problem");
             }
-            planes.Add(plane);
-            Console.WriteLine($"{ plane.Name } has landed at {_AirportName}");
         }
 
         public void TakeOff(Plane plane)
